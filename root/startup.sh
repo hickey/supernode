@@ -34,6 +34,9 @@ if [ "${LOCALNODE}" = "" ]; then
   echo "LOCALNODE is not set so localnode.local.mesh will not resolve."
 fi
 
+# startup rsyslogd to capture relevent logs
+rsyslogd
+
 # shellcheck source=/dev/null
 . /setup/network.sh
 # shellcheck source=/dev/null
