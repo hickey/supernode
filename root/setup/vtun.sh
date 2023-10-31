@@ -4,8 +4,8 @@ MAXTUNNEL="${MAXTUNNEL:-31}"
 
 # Generate VTUN client
 
-mkdir /dev/net
-mknod -m 666 /dev/net/tun c 10 200
+[[ ! -d /dev/net ]] && mkdir /dev/net
+[[ ! -e /dev/net/tun ]] && mknod -m 666 /dev/net/tun c 10 200
 
 cat > /etc/vtund.conf << __EOF__
 options {
