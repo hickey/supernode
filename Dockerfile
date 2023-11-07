@@ -1,6 +1,6 @@
 FROM debian:stable AS build
 
-RUN apt update ;\
+RUN apt update && \
     apt install -y git build-essential bison flex libgps-dev procps
 
 RUN mkdir build && \
