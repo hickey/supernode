@@ -20,8 +20,9 @@ COPY --from=build /etc/olsrd/ /etc/olsrd/
 
 RUN chmod 777 /startup.sh /setup/*.sh /named/*.sh && \
     apt update -y && \
-    apt install -y libgps-dev vtun bind9 iptables inotify-tools net-tools dnsutils procps iputils-ping traceroute tcpdump rsyslog curl && \
+    apt install -y libgps-dev vtun bind9 iptables inotify-tools net-tools dnsutils procps iputils-ping traceroute tcpdump rsyslog curl lsof && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
-    curl -sLo /usr/share/dns/root.hints ftp://ftp.rs.internic.net/domain/db.cache
+    curl -sLo /usr/share/dns/root.hints ftp://ftp.rs.internic.net/domain/db.cache && \
+    echo "nameserver 127.0.0.1" > /etc/resolv.conf
 
 ENTRYPOINT ["/startup.sh"]
