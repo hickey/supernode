@@ -1,4 +1,4 @@
-FROM debian:stable-20210902-slim AS build
+FROM debian:stable AS build
 
 RUN apt update ;\
     apt install -y git build-essential bison flex libgps-dev procps
@@ -10,7 +10,7 @@ RUN mkdir build && \
     LDFLAGS='-Wl,-rpath,/usr/local/lib' make build_all && \
     LDFLAGS='-Wl,-rpath,/usr/local/lib' make install_all
 
-FROM debian:stable-20210902-slim
+FROM debian:stable
 
 EXPOSE 698/udp 8081/tcp 53/udp 53/tcp
 
