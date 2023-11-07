@@ -27,9 +27,11 @@ do
 done
 echo '};' >> ${CONF}
 
-echo "forwarders {
-    1.1.1.1;
-    8.8.8.8;
+echo "options {
+    forwarders {
+        1.1.1.1;
+        8.8.8.8;
+    };
 };" >> ${CONF}
 
 # Add master zones
