@@ -15,9 +15,9 @@ FROM debian:stable
 EXPOSE 698/udp 8081/tcp 53/udp 53/tcp 5525/tcp
 
 COPY root/ /
-COPY --from=build /usr/local/sbin/ /usr/local/sbin/
+COPY --from=build /usr/local/ /usr/local/
 COPY --from=build /etc/olsrd/ /etc/olsrd/
-COPY --from=build /usr/local/lib/ /usr/local/lib/
+
 RUN chmod 777 /startup.sh /setup/*.sh /named/*.sh && \
     apt update -y && \
     apt install -y libgps-dev vtun bind9 iptables inotify-tools net-tools dnsutils procps iputils-ping traceroute tcpdump rsyslog curl && \
