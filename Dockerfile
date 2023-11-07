@@ -12,7 +12,7 @@ RUN mkdir build && \
 
 FROM debian:stable
 
-EXPOSE 698/udp 8081/tcp 53/udp 53/tcp
+EXPOSE 698/udp 8081/tcp 53/udp 53/tcp 5525/tcp
 
 COPY root/ /
 COPY --from=build /usr/local/sbin/ /usr/local/sbin/
