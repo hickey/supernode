@@ -43,6 +43,10 @@ zone "${DNS_ZONE}.mesh" {
   allow-transfer { othernodes; };
   file "/tmp/bind/zones/master-${DNS_ZONE}.zone.db";
 };
+zone "." {
+  type hint;
+  file "/etc/bind/db.root";
+};
 __EOF__
 
 # Add slaves
