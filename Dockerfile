@@ -22,6 +22,6 @@ RUN chmod 777 /startup.sh /setup/*.sh /named/*.sh && \
     apt update -y && \
     apt install -y libgps-dev vtun bind9 iptables inotify-tools net-tools dnsutils procps iputils-ping traceroute tcpdump rsyslog curl && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
-    curl -sLo /etc/bind/db.root ftp://ftp.rs.internic.net/domain/db.cache
+    curl -sLo /usr/share/dns/root.hints ftp://ftp.rs.internic.net/domain/db.cache
 
 ENTRYPOINT ["/startup.sh"]
