@@ -70,8 +70,9 @@ do
 
   # Generate local and remote IPs from network address
   mapfile -t s < <(echo "${net}" | tr "." "\n")
-  vtund "${name}-${s[0]}-${s[1]}-${s[2]}-${s[3]}" "${target}"
-  tun=$((tun + 1))
+  if [[ -n "${target}" ]]; then
+    vtund "${name}-${s[0]}-${s[1]}-${s[2]}-${s[3]}" "${target}"
+  fi
 done
 
 sleep 2147483647d &
